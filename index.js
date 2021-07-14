@@ -26,6 +26,11 @@ mongoose.connect(process.env.MONGO_URL, {
 //basic SANITY check greeting for deployed API
 app.get('/', (req, res)=>{res.send("Hello Hydrogen Pod!")})
 
+//import routes
+const noteRoute = require('./routes/notes')
+
+//initialize routes
+app.use('/api/notes', noteRoute)
 
 //port listening
 app.listen(SERVER_PORT, ()=>{console.log(`Server running at ${SERVER_PORT}`)})
